@@ -44,9 +44,24 @@
             android:layout_weight="1"
             android:id="@+id/new_plant_name" />
     </LinearLayout>
+  <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:id="@+id/linearLayout1">
     <Button
         android:text="Save"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:id="@+id/save_button" />
+    <Button
+      android:text="Return To List"
+      android:layout_height="match_parent"
+      android:layout_width="match_parent"
+      android:layout_weight="1"
+      android:id="@+id/to_list"/>    
+  </LinearLayout>
 </LinearLayout>

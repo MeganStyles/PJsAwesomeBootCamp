@@ -5,30 +5,26 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
-namespace GardenPlanner2
-{
+namespace GardenPlanner2    {
 
-    public class SwitchActivity : Intent
-    {
-        Context context;
-        Type type;
-        string data;
-        public Intent intent(Context context, Type type, string data)
-        {
-            this.context = context;
-            this.type = type;
-            this.data = data;
+    public class SwitchActivity : Intent    {
 
-            Intent intent = new Intent(context, type);
+        //Intent that sends only data file
+        public static Intent intent(Context context, Type openActivity, string data)    {            
+            Intent intent = new Intent(context, openActivity);
             intent.PutExtra("plantFilePath", data);
-            return intent;
-                 
+            return intent;                 
         }
+
+        //Intent that sends data file as well as current position in plantlist of data
+        public static Intent intent(Context context, Type openActivity, string data, PlantList plant)    {
+            PlantList plantList = new PlantList();
+            Intent intent = new Intent(context, openActivity);
+            intent.PutExtra("plantFilePath", data);
+            intent.PutExtra("postion", plant.Items);
+            return intent;
+        }       
      }
  }
 

@@ -75,17 +75,20 @@ namespace GardenPlanner2
 			// aapt resource value: 0x7f050002
 			public const int textView1 = 2131034114;
 			
-			// aapt resource value: 0x7f050008
-			public const int view_edit = 2131034120;
-			
-			// aapt resource value: 0x7f050006
-			public const int view_plant_name = 2131034118;
-			
 			// aapt resource value: 0x7f050005
-			public const int view_plant_picture = 2131034117;
+			public const int to_list = 2131034117;
+			
+			// aapt resource value: 0x7f050009
+			public const int view_edit = 2131034121;
 			
 			// aapt resource value: 0x7f050007
-			public const int view_to_list = 2131034119;
+			public const int view_plant_name = 2131034119;
+			
+			// aapt resource value: 0x7f050006
+			public const int view_plant_picture = 2131034118;
+			
+			// aapt resource value: 0x7f050008
+			public const int view_to_list = 2131034120;
 			
 			static Id()
 			{
