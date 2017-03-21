@@ -14,6 +14,10 @@ namespace GardenPlanner2
 {
     public class Plant
     {
-        public string PlantName { get; set; }
+       
+        public string PlantName        {
+            get; set;
+        }
+       
     }
 }

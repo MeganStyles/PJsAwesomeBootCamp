@@ -59,9 +59,10 @@ namespace GardenPlanner2
             string name = plantList.Items[e.Position].PlantName;
             //uses the plant name to find the item in the json file
             
+            
 
             //opens uses an intent to open the ViewPlantActivity and send a json string file
-            StartActivity(SwitchActivity.intent(this, typeof(ViewPlantActivity), data));
+            StartActivity(SwitchActivity.intent(this, typeof(ViewPlantActivity), data, name));
         }
 
         private PlantList Get_File(string file)

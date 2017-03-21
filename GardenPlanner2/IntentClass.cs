@@ -18,11 +18,11 @@ namespace GardenPlanner2    {
         }
 
         //Intent that sends data file as well as current position in plantlist of data
-        public static Intent intent(Context context, Type openActivity, string data, PlantList plant)    {
+        public static Intent intent(Context context, Type openActivity, string data, string plantName)    {
             PlantList plantList = new PlantList();
             Intent intent = new Intent(context, openActivity);
             intent.PutExtra("plantFilePath", data);
-            intent.PutExtra("postion", plant.Items);
+            intent.PutExtra("PlantName", plantName);
             return intent;
         }       
      }
