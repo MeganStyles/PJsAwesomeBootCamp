@@ -35,14 +35,8 @@ namespace GardenPlanner2
             //get the data sent from the last activity
             _data = Intent.GetStringExtra("plantFilePath") ?? "Data not available";
             _plantName = Intent.GetStringExtra("PlantName") ?? "Data not available";
-            if (Intent.GetStringExtra("PlantName") == "Data not available") 
-            {
-                _plantName = Last_Plant_Name();
-            }
-            else
-            {
-                _plantName = Current_Plant_Name(_plantName);
-            }
+            _plantName = Current_Plant_Name(_plantName);
+            
 
 
             //grabs the text view for the plant name
@@ -89,6 +83,7 @@ namespace GardenPlanner2
 
                 //need to get latest plant object out of list.
                 string name = plantList.Items[plantList.Items.Count - 1].PlantName;
+
                 //return name;
                 return name;
             }
@@ -101,8 +96,16 @@ namespace GardenPlanner2
             {
                 string content = streamReader.ReadToEnd();
                 PlantList plantList = JsonConvert.DeserializeObject<PlantList>(content);
-                var plant = plantList.Items.Find(Items => Items.PlantName == name);
-                string plantName = plant.PlantName.ToString();
+                string plantName;
+
+                if(Intent.GetStringExtra("PlantName") == "Data not available")                {
+                    //need to get latest plant object out of list.
+                    var plant = plantList.Items[plantList.Items.Count - 1];
+                    plantName = plant.PlantName.ToString() ;
+                }else                {
+                    var plant = plantList.Items.Find(Items => Items.PlantName == name);
+                    plantName = plant.PlantName.ToString();
+                }
                 return plantName;
             }
 
