@@ -98,7 +98,7 @@ namespace GardenPlanner2
                 PlantList plantList = JsonConvert.DeserializeObject<PlantList>(content);
                 string plantName;
 
-                if(Intent.GetStringExtra("PlantName") == "Data not available")                {
+                if(name == "Data not available")                {
                     //need to get latest plant object out of list.
                     var plant = plantList.Items[plantList.Items.Count - 1];
                     plantName = plant.PlantName.ToString() ;

@@ -34,10 +34,11 @@ namespace GardenPlanner2
         }
         public override int Count
         {
-            get
-            {
-                return plantList.Items.Count;
-            }
+            get  {       
+                 
+                    return plantList.Items.Count;
+                
+              }
         }
         public override View GetView(int position, View convertView, ViewGroup parent)
         {

@@ -16,6 +16,7 @@ namespace GardenPlanner2
     {
         //initialises a plant object
         private Plant plantObject = new Plant();
+        private PlantList plantList;
 
 
         protected override void OnCreate(Bundle bundle)
@@ -51,13 +52,13 @@ namespace GardenPlanner2
             plantObject.PlantName = plantName;
         }
 
-        private void Return_List_Click(object sender, EventArgs e)
-        {
-
-            //to do: just sends the file without saving a new one. 
-            //doesn't need to send data file again - no new plant item
-            //need a second inent constructor for just a normal intent.
-            StartActivity(SwitchActivity.intent(this, typeof(PlantListActivity), File_Path()));
+        private void Return_List_Click(object sender, EventArgs e) {
+            if (plantList!=null)
+            {
+                StartActivity(SwitchActivity.intent(this, typeof(PlantListActivity), File_Path()));
+            }else    {
+                Toast.MakeText(this, "Warning! Invisibles lists will turn your phone into a unicorn!", ToastLength.Short).Show();
+            }
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -84,7 +85,7 @@ namespace GardenPlanner2
         private void Save_File(string fileName)
         {
 
-            PlantList plantItems;
+            
 
             if (File.Exists(fileName))
             {
@@ -94,34 +95,26 @@ namespace GardenPlanner2
                 {
                     //reads the file and then sets it to a string
                     string content = streamReader.ReadToEnd();
-                    plantItems = JsonConvert.DeserializeObject<PlantList>(content);
+                    plantList = JsonConvert.DeserializeObject<PlantList>(content);
                 }
 
             }
             else
             {
-                plantItems = new PlantList();
+                plantList = new PlantList();
             }
 
             
                 //put plantObject in List
-                plantItems.Items.Add(plantObject);
+                plantList.Items.Add(plantObject);
                 //write list to json
                 //creates a streamWriter and uses above filepath to write file
                 using (var streamWriter = new StreamWriter(fileName, false))
                 {
                     //writes the new plant object instance to a json file
-                    streamWriter.WriteLine(JsonConvert.SerializeObject(plantItems));
+                    streamWriter.WriteLine(JsonConvert.SerializeObject(plantList));
                 }
-            
-            
-                //to do: write toast message - "you can't have a plant with no name"
-                using (var streamWriter = new StreamWriter(fileName, false))
-                {
-                    //writes the new plant object instance to a json file
-                    streamWriter.WriteLine(JsonConvert.SerializeObject(plantItems));
-                }
-            
+             
                        
            
         }
